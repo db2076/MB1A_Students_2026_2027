@@ -55,3 +55,25 @@ num_cells_after_1 <- 1432
 num_cells_after_2 <- 7543
 ```
 
+```{r}
+cell_ID_vec <- c(cell_ID_1, cell_ID_2)
+treated_vec <- c(treated_1, treated_2)
+num_cells_before_vec <- c(num_cells_before_1, num_cells_before_2)
+num_cells_after_vec <- c(num_cells_after_1, num_cells_after_2)
+```
+
+```{r}
+all_my_pets <- c("dog", "horse", "guinea pig", "chicken", "cat")
+print(all_my_pets[4])
+```
+```{r}
+my_data_frame <- tibble(
+  cell_ID = cell_ID_vec,
+  treated = treated_vec,
+  num_cells_before = num_cells_before_vec,
+  num_cells_after = num_cells_after_vec,
+)
+
+gt(my_data_frame)
+```
+
