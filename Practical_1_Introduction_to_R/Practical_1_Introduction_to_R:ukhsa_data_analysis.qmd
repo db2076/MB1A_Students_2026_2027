@@ -1,0 +1,25 @@
+---
+title: "Practical_1_Introduction_to_R/ukhsa_data_analysis.qmd"
+author: "Daisy Beaumont"
+---
+```{r}
+install.packages("fortunes")
+
+```
+```{r}
+library(fortunes)
+```
+
+
+```{r}
+fortune()
+```
+```{r}
+library(tidyverse)
+library(gt)
+```
+```{r}
+my_first_vector <- c(1, 5, 9)
+print(my_first_vector)
+```
+
