@@ -1,0 +1,57 @@
+---
+title: "Practical_1_Introduction_to_R/prac1_exercises.qmd"
+author: "Daisy Beaumont"
+---
+
+```{r}
+sqrt(9)
+```
+```{r}
+round(3.14159)
+```
+```{r}
+round(3.14159, digits = 2)
+```
+
+```{r}
+print(seq(1, 10, 2))
+```
+
+```{r}
+print(seq(by = 2, from = 1, to = 10))
+```
+```{r}
+print(rep(5, 7))
+```
+```{r}
+print(rep(x=5, times=7))
+```
+```{r}
+x <- "hello my name is daisy"
+print(class(x))
+```
+```{r}
+y <- 489493874
+print(y)
+```
+
+```{r}
+z <- FALSE
+print(class(z))
+```
+
+```{r}
+cell_ID_1 <- "CX1"
+cell_ID_2 <- "CX2"
+
+
+treated_1 <- TRUE
+treated_2 <- FALSE
+
+num_cells_before_1 <- 5415
+num_cells_before_2 <- 8123
+
+num_cells_after_1 <- 1432
+num_cells_after_2 <- 7543
+```
+
