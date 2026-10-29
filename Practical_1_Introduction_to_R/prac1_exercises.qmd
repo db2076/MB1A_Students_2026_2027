@@ -77,3 +77,39 @@ my_data_frame <- tibble(
 gt(my_data_frame)
 ```
 
+```{r}
+nice_food <- c("cheese", "beans", "potatoes")
+
+print(nice_food[1])
+
+```
+
+```{r}
+all_my_pets <- c("dog", "horse", "guinea pig", "pig", "cat")
+
+print(all_my_pets[4])
+my_favorite_animal <- all_my_pets[4]
+print(my_favorite_animal)
+```
+```{r}
+my_data_frame <- tibble(
+  fruit = c("apple", "pear", "banana"),
+  length = c(22, 30, 55),
+  weight = c(150, 165, 170)
+)
+
+
+print(my_data_frame) 
+```
+```{r}
+library(gt)
+my_data_frame <- tibble(
+  fruit = c("apple", "pear", "banana"),
+  length = c(22, 30, 55),
+  weight = c(150, 165, 170)
+)
+
+gt(my_data_frame)
+```
+
+
