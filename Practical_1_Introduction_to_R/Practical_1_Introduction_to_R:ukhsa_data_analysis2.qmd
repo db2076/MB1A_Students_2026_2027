@@ -1,0 +1,25 @@
+
+selected Testing
+Rolling monthly average percent of E. faecium bacteraemia tested for resistance to glycopeptides. Monthly figures are shown as the first day of each month. For example, the figures for January 2022 are shown as at "1 Jan 2022".
+
+Up to and including month of 1 Jul 2026
+
+
+```{r}
+library(tidyverse)
+library(gt)
+
+testing_glycopeptide_resistance <- read_csv("data/ukhsa-chart-download.csv")
+
+gt(head(testing_glycopeptide_resistance))
+
+
+```
+```{r}
+ggplot(testing_glycopeptide_resistance, aes(
+  x = date, 
+  y = metric_value
+)) + 
+  geom_line(colour = "blue", linewidth = 1) + xlab("Date") + ylab("% tested") + ggtitle("% Tested by Date")
+```
+
