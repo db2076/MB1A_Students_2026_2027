@@ -59,4 +59,80 @@ bird_breeding_exc <- bird_breeding_selected |>
   filter(Site != "Spain")
 gt(bird_breeding_exc)
 ```
+```{r}
+bird_migration_grouped <- bird_migratory_exc |> group_by(Site)
+glimpse(bird_migration_grouped)
+```
+```{r}
+lat_df <- bird_migration_grouped |>
+  summarise(Highest_Lat_Stopover = max(Stopover_Latitude, na.rm = TRUE))
+
+gt(lat_df)
+```
+```{r}
+lat_df <- bird_migration_grouped |>
+  summarise(
+    Highest_Lat_Stopover = max(Stopover_Latitude, na.rm = TRUE),
+    Lowest_Lat_Stopover = min(Stopover_Latitude, na.rm = TRUE),
+    Mean_Lat_Stopover = mean(Stopover_Latitude, na.rm = TRUE),
+    Highest_Lat_Winter = max(Winter_Latitude, na.rm = TRUE),
+    Lowest_Lat_Winter = min(Winter_Latitude, na.rm = TRUE),
+    Mean_Lat_Winter = mean(Winter_Latitude, na.rm = TRUE)
+  )
+```
+
+
+```{r}
+gt(lat_df)
+```
+```{r}
+bird_migration_summary <- bird_migratory_exc |> 
+  group_by(Site) |>
+  summarise(Stopover_Latitude  = median(Stopover_Latitude),
+    Stopover_Longitude = median(Stopover_Longitude),
+    Iberian_Latitude   = median(Iberian_Latitude),
+    Iberian_Longitude  = median(Iberian_Longitude),
+    Westmost_Latitude  = median(Westmost_Latitude),
+    Westmost_Longitude = median(Westmost_Longitude),
+    Winter_Latitude    = median(Winter_Latitude),
+    Winter_Longitude   = median(Winter_Longitude)
+  )
+
+gt(bird_migration_summary)
+  
+```
+```{r}
+combined_bird_data <- full_join(bird_breeding_exc, bird_migration_summary)
+gt(combined_bird_data)
+```
+```{r}
+combined_bird_piv <- combined_bird_data |>
+  pivot_longer(
+    cols = ends_with(c("_Longitude", "_Latitude")),
+    names_sep = "_",
+    names_to = c("Location_Type", ".value")
+  )
+
+gt(combined_bird_piv)
+```
+```{r}
+spring_types <- c("Breeding", "Stopover", "Winter")
+spring_data <- combined_bird_piv |> 
+  filter(Location_Type %in% spring_types)
+gt(spring_data)
+
+
+```
+
+```{r}
+autumn_types <- c("Breeding", "Iberian", "Westmost")
+autumn_data <- combined_bird_piv |> 
+  filter(Location_Type %in% autumn_types)
+gt(autumn_data)
+```
+
+```{r}
+write_csv(spring_data, "output/birds_spring.csv")
+write_csv(autumn_data, "output/birds_autumn.csv")
+```
 
