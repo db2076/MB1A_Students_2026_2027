@@ -46,6 +46,17 @@ bird_migratory_selected <- bird_migratory_connectivity |>
 gt(bird_migratory_selected)
 ```
 ```{r}
-
+library(tidyverse)
+library(gt)
+```
+```{r}
+bird_migratory_exc <- bird_migratory_selected |> 
+  filter(Site !="Spain")
+gt(head(bird_migratory_exc))
+```
+```{r}
+bird_breeding_exc <- bird_breeding_selected |> 
+  filter(Site != "Spain")
+gt(bird_breeding_exc)
 ```
 
