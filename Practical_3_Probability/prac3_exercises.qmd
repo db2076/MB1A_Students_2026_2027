@@ -56,4 +56,20 @@ for (i in seq_len(10)) {
 }
 gt(full_breakfast)
 ```
+```{r}
+n_sims <- 1000
+n_flowers_per_sim <- 200
+flowers <- rbinom(
+  n = n_sims,
+  size = n_flowers_per_sim,
+  prob = 0.6)
+times_successful <- sum(flowers>= 125)
+prop_successful <- times_successful / n_sims
+print(prop_successful)
+```
+```{r}
+prob_under_125 <- pbinom(124, 200, 0.6)
+prob_125_or_over <- 1 - prob_under_125
+print(prob_125_or_over)
+```
 
